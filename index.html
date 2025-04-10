@@ -6,6 +6,7 @@
     <title>Álbum de fotos interativo</title>
 
     <link rel="stylesheet" href="estilos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   </head>
   <body>
     <h2>Meu Álbum de Fotos</h2>
@@ -29,6 +30,21 @@
       accept="image/*"
       style="display: none"
     />
+
+    <!-- Botão para exportar as imagens para PDF -->
+    <button
+      onclick="exportarParaPDF()"
+      style="
+        background-color: #0a4f94;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      "
+    >
+      Exportar para PDF
+    </button>
 
     <div id="galeria"></div>
     <div id="modal" onclick="fecharModal()">
