@@ -1,5 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* Remove margens padrão do body */
+  padding: 10px;
 }
 
 #galeria {
@@ -18,6 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  aspect-ratio: 1 / 1; /* Garante que o contêiner da imagem seja quadrado */
 }
 
 .imagem img {
@@ -43,11 +46,12 @@ body {
 }
 
 #modal img{
-    max-width: auto;
-    max-height: auto;
+    max-width: 90%;;
+    max-height: 70%;
     margin: auto;
     display: block;
     object-fit: contain;
+    border-radius: 5px;
 }
 
 #modal .descricao{
@@ -57,6 +61,7 @@ body {
     position: absolute;
     bottom: 10px;
     width: 100%;
+    font-size: 16px; /* Tamanho padrão do texto */
 
 }
 
@@ -64,6 +69,7 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
+    margin-bottom: 10px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #043f7a;
@@ -71,4 +77,66 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Media Query para telas menores (celulares) */
+@media (max-width: 768px) {
+  #galeria {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets e celulares maiores */
+    gap: 8px; /* Reduz o espaço entre as imagens */
+  }
+
+  .imagem {
+    aspect-ratio: 1 / 1; /* Mantém o contêiner quadrado */
+  }
+
+  .imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #modal img {
+    max-width: 85%; /* Reduz um pouco mais a largura máxima no modal */
+    max-height: 60%; /* Reduz a altura máxima para deixar espaço para o botão e descrição */
+  }
+
+  #modal .descricao {
+    font-size: 14px; /* Reduz o tamanho do texto para telas menores */
+    bottom: 20px; /* Ajusta a posição para não ficar muito perto da borda */
+  }
+
+  #modal button {
+    padding: 8px 16px; /* Reduz o padding do botão para telas menores */
+    font-size: 14px; /* Reduz o tamanho da fonte do botão */
+    top: 5px; /* Ajusta a posição para melhor visualização */
+    left: 5px;
+  }
+}
+
+/* Media Query para telas muito pequenas (ex.: celulares menores que 480px) */
+@media (max-width: 480px) {
+  #galeria {
+    grid-template-columns: 1fr; /* 1 coluna em celulares pequenos */
+    gap: 5px; /* Reduz ainda mais o espaço entre as imagens */
+  }
+
+  .imagem {
+    aspect-ratio: 1 / 1; /* Mantém o contêiner quadrado */
+  }
+
+  #modal img {
+    max-width: 90%;
+    max-height: 50%; /* Reduz ainda mais a altura para caber na tela */
+  }
+
+  #modal .descricao {
+    font-size: 12px; /* Reduz o tamanho do texto para telas muito pequenas */
+    bottom: 15px;
+  }
+
+  #modal button {
+    padding: 6px 12px; /* Reduz ainda mais o padding do botão */
+    font-size: 12px; /* Reduz o tamanho da fonte do botão */
+  }
 }
